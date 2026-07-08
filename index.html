@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="像素造物所——展示软件学习、游戏作品与开发日志的个人作品网站。" />
+  <title>像素造物所</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="pixel-noise" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html" aria-label="像素造物所首页">
+        <span class="brand-icon" aria-hidden="true">
+          <i></i><i></i><i></i><i></i><i></i>
+        </span>
+        <span>像素造物所</span>
+      </a>
+
+      <button class="menu-toggle" aria-label="打开导航菜单" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="main-nav" aria-label="主导航">
+        <a class="active" href="index.html">首页</a>
+        <a href="software.html">软件学习</a>
+        <a href="games.html">游戏作品</a>
+        <a href="log.html">开发日志</a>
+        <a href="about.html">关于我</a>
+        <a href="contact.html">联系</a>
+      </nav>
+
+      <a class="btn btn-primary nav-cta" href="games.html">查看作品 <span>›</span></a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-grid-bg" aria-hidden="true"></div>
+      <div class="floating-cubes" aria-hidden="true">
+        <span class="cube c1"></span>
+        <span class="cube c2"></span>
+        <span class="cube c3"></span>
+        <span class="cube c4"></span>
+        <span class="cube c5"></span>
+      </div>
+
+      <div class="container hero-content">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">GAME DEV · SOFTWARE · CREATION</p>
+          <h1>把学习的软件<br>做成看得见的<span>作品</span></h1>
+          <p class="hero-text">
+            展示我正在学习的软件、开发中的游戏，<br>
+            以及持续更新的项目成果。
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="software.html">浏览软件栈 <span>›</span></a>
+            <a class="btn btn-ghost" href="games.html">进入游戏展区 <span>›</span></a>
+          </div>
+        </div>
+
+        <div class="hero-art reveal">
+          <img src="images/hero/hero-workstation.png" alt="像素风开发工作台">
+        </div>
+      </div>
+    </section>
+
+    <section class="featured-strip">
+      <div class="container">
+        <div class="featured-track" id="featuredTrack">
+          <article class="featured-card reveal">
+            <div class="thumb">
+              <img src="images/projects/pixel-adventure.png" alt="像素冒险 Demo">
+            </div>
+            <div class="featured-info">
+              <strong>01</strong>
+              <div>
+                <h3>像素冒险 Demo</h3>
+                <p>平台跳跃 / 像素风 / 关卡探索</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="featured-card reveal">
+            <div class="thumb">
+              <img src="images/projects/puzzle-temple.png" alt="3D 解谜原型">
+            </div>
+            <div class="featured-info">
+              <strong>02</strong>
+              <div>
+                <h3>3D 解谜原型</h3>
+                <p>3D / 解谜 / 机关探索</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="featured-card reveal">
+            <div class="thumb">
+              <img src="images/projects/indie-lab.png" alt="独立游戏实验室">
+            </div>
+            <div class="featured-info">
+              <strong>03</strong>
+              <div>
+                <h3>独立游戏实验室</h3>
+                <p>玩法实验 / 系统原型 / 持续迭代</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="software">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="pixel-mark"></span>
+          <h2>正在学习的软件</h2>
+          <div class="dot-group"><i></i><i></i><i></i></div>
+        </div>
+
+        <div class="software-grid">
+          <article class="software-card reveal">
+            <div class="soft-icon unity-icon">
+              <img src="images/software/unity-icon.png" alt="Unity 图标">
+            </div>
+            <div class="card-title-row">
+              <h3>Unity</h3>
+              <span class="tag green">项目实践</span>
+            </div>
+            <p>学习 C# 与 Unity 核心功能，完成 2D / 3D 项目与系统开发。</p>
+            <div class="progress-meta"><span>学习进度</span><strong>72%</strong></div>
+            <div class="progress"><span style="width:72%"></span></div>
+          </article>
+
+          <article class="software-card reveal">
+            <div class="soft-icon unreal-icon">
+              <img src="images/software/unreal-engine-icon.png" alt="Unreal Engine 图标">
+            </div>
+            <div class="card-title-row">
+              <h3>Unreal Engine</h3>
+              <span class="tag blue">学习中</span>
+            </div>
+            <p>探索蓝图与 C++ 开发，构建高质量 3D 游戏原型。</p>
+            <div class="progress-meta"><span>学习进度</span><strong>48%</strong></div>
+            <div class="progress"><span style="width:48%"></span></div>
+          </article>
+
+          <article class="software-card reveal">
+            <div class="soft-icon blender-icon">
+              <img src="images/software/blender-icon.png" alt="Blender 图标">
+            </div>
+            <div class="card-title-row">
+              <h3>Blender</h3>
+              <span class="tag blue">学习中</span>
+            </div>
+            <p>学习建模、材质与动画，为游戏制作资源与场景。</p>
+            <div class="progress-meta"><span>学习进度</span><strong>61%</strong></div>
+            <div class="progress"><span style="width:61%"></span></div>
+          </article>
+
+          <article class="software-card reveal">
+            <div class="soft-icon ps-icon">
+              <img src="images/software/photoshop-icon.png" alt="Photoshop 图标">
+            </div>
+            <div class="card-title-row">
+              <h3>Photoshop</h3>
+              <span class="tag green">持续更新</span>
+            </div>
+            <p>用于像素绘制、UI 设计与游戏宣传图制作。</p>
+            <div class="progress-meta"><span>学习进度</span><strong>55%</strong></div>
+            <div class="progress"><span style="width:55%"></span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-deep" id="games">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="pixel-mark sword">⚔</span>
+          <h2>游戏作品展示</h2>
+          <div class="dot-group"><i></i><i></i><i></i></div>
+        </div>
+
+        <div class="game-grid">
+          <article class="game-card reveal">
+            <div class="game-cover">
+              <img src="images/projects/pixel-adventure.png" alt="像素冒险 Demo">
+            </div>
+            <div class="game-body">
+              <h3>像素冒险 Demo</h3>
+              <div class="tags">
+                <span class="tag red">平台跳跃</span>
+                <span class="tag pink">像素风</span>
+                <span class="tag gray">关卡探索</span>
+              </div>
+              <p>一款复古像素风格的平台跳跃游戏，包含多个关卡、敌人 AI 与收集系统。</p>
+              <a href="pixel-adventure.html" class="btn btn-small">查看详情 <span>›</span></a>
+            </div>
+          </article>
+
+          <article class="game-card reveal">
+            <div class="game-cover">
+              <img src="images/projects/puzzle-temple.png" alt="3D 解谜原型">
+            </div>
+            <div class="game-body">
+              <h3>3D 解谜原型</h3>
+              <div class="tags">
+                <span class="tag blue">3D</span>
+                <span class="tag yellow">解谜</span>
+                <span class="tag green">机关</span>
+                <span class="tag cyan">环境探索</span>
+              </div>
+              <p>3D 视角解谜原型，利用机关与光影解开谜题，专注关卡设计与互动体验。</p>
+              <a href="puzzle-temple.html" class="btn btn-small">查看详情 <span>›</span></a>
+            </div>
+          </article>
+
+          <article class="game-card reveal">
+            <div class="game-cover">
+              <img src="images/projects/indie-lab.png" alt="独立游戏实验室">
+            </div>
+            <div class="game-body">
+              <h3>独立游戏实验室</h3>
+              <div class="tags">
+                <span class="tag orange">系统实验</span>
+                <span class="tag purple">原型</span>
+                <span class="tag violet">玩法迭代</span>
+              </div>
+              <p>各种玩法与系统的实验场，记录想法、验证机制，寻找有趣的游戏可能性。</p>
+              <a href="indie-lab.html" class="btn btn-small">查看详情 <span>›</span></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="logs">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="pixel-mark"></span>
+          <h2>开发进度 / 学习日志</h2>
+          <div class="dot-group"><i></i><i></i><i></i></div>
+        </div>
+
+        <div class="dashboard-grid">
+          <article class="panel reveal">
+            <h3>技能学习进度</h3>
+            <div class="skill-list">
+              <div class="skill">
+                <div><span>🎮 C# 编程基础</span><strong>80%</strong></div>
+                <div class="progress"><span style="width:80%"></span></div>
+              </div>
+              <div class="skill">
+                <div><span>🧩 游戏编程</span><strong>65%</strong></div>
+                <div class="progress"><span style="width:65%"></span></div>
+              </div>
+              <div class="skill">
+                <div><span>🧱 3D 建模与材质</span><strong>60%</strong></div>
+                <div class="progress"><span style="width:60%"></span></div>
+              </div>
+              <div class="skill">
+                <div><span>🗺️ 关卡设计</span><strong>55%</strong></div>
+                <div class="progress"><span style="width:55%"></span></div>
+              </div>
+              <div class="skill">
+                <div><span>🖥️ 游戏 UI/UX</span><strong>45%</strong></div>
+                <div class="progress"><span style="width:45%"></span></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel reveal">
+            <h3>最近更新</h3>
+            <div class="timeline">
+              <div class="timeline-item">
+                <span class="time-icon">
+                  <img src="images/icons/grass-block.png" alt="草地方块">
+                </span>
+                <div>
+                  <h4>更新了《像素冒险 Demo》第 2 关</h4>
+                  <p>新增移动平台与金币系统，优化碰撞判定。</p>
+                  <time>2026-07-08</time>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <span class="time-icon">
+                  <img src="images/icons/blue-cube.png" alt="发光蓝色方块">
+                </span>
+                <div>
+                  <h4>完成 3D 解谜原型灯光优化</h4>
+                  <p>改进光影表现，提升场景氛围与可读性。</p>
+                  <time>2026-07-06</time>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <span class="time-icon">
+                  <img src="images/icons/pickaxe.png" alt="镐子">
+                </span>
+                <div>
+                  <h4>学习 Blender 材质节点基础</h4>
+                  <p>制作岩石与金属材质，应用到场景资源中。</p>
+                  <time>2026-07-03</time>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel goal-panel reveal">
+            <h3>本周目标</h3>
+            <label><input type="checkbox" checked> 完成像素冒险第 3 关</label>
+            <label><input type="checkbox" checked> 学习 Unreal 蓝图基础</label>
+            <label><input type="checkbox"> 设计新的敌人 AI</label>
+            <label><input type="checkbox"> 更新开发日志</label>
+            <div class="campfire">
+              <img src="images/icons/campfire.png" alt="像素篝火">
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about-section" id="about">
+      <div class="container">
+        <div class="about-box reveal">
+          <div class="pixel-avatar">
+            <img src="images/icons/avatar.png" alt="开发者像素形象">
+          </div>
+          <div class="about-copy">
+            <h2>关于我</h2>
+            <p>一个热爱游戏与软件开发的学习者与创作者。</p>
+            <p>记录学习过程，分享开发成果，不断挑战自己，做出更有趣的作品。</p>
+          </div>
+          <div class="about-action" id="contact">
+            <a class="btn btn-primary large" href="contact.html">联系我</a>
+            <span>期待与你交流想法与合作！</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="brand footer-brand" href="index.html">
+          <span class="brand-icon small" aria-hidden="true">
+            <i></i><i></i><i></i><i></i><i></i>
+          </span>
+          <span>像素造物所</span>
+        </a>
+        <p>© 2026 像素造物所. 保留所有权利。</p>
+      </div>
+
+      <nav class="footer-nav">
+        <a href="index.html">首页</a>
+        <a href="software.html">软件学习</a>
+        <a href="games.html">游戏作品</a>
+        <a href="log.html">开发日志</a>
+        <a href="about.html">关于我</a>
+        <a href="contact.html">联系</a>
+      </nav>
+
+      <div class="socials">
+        <a href="https://github.com/qwq95162437" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+          <img src="images/icons/github.png" alt="GitHub">
+        </a>
+        <a href="https://space.bilibili.com/1648424499" aria-label="哔哩哔哩" target="_blank" rel="noopener noreferrer">
+          <img src="images/icons/bilibili.png" alt="哔哩哔哩">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=qwq861186@gmail.com"
+           aria-label="Gmail"
+           target="_blank"
+           rel="noopener noreferrer">
+          <img src="images/icons/gmail.png" alt="Gmail">
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-top" aria-label="返回顶部">↑</button>
+  <script src="js/script.js"></script>
+</body>
+</html>
