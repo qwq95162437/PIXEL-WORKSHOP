@@ -67,23 +67,27 @@ def save_message():
 
     if not name or not email or not subject or not content:
         return redirect("/contact.html?status=empty")
-
-    conn = sqlite3.connect(DB_PATH)
-    cur = conn.cursor()
-    cur.execute("""
-        INSERT INTO messages (name, email, subject, content, created_at)
-        VALUES (?, ?, ?, ?, ?)
-    """, (
-        name,
-        email,
-        subject,
-        content,
-        datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    ))
-    conn.commit()
-    conn.close()
-
-    return redirect("/contact.html?status=success")
+    
+    try:
+        conn = sqlite3.connect(DB_PATH)
+        cur = conn.cursor()
+        cur.execute("""
+                    INSERT INTO messages (name, email, subject, content, created_at)
+                    VALUES (?, ?, ?, ?, ?)
+                    """, (
+                        name,
+                        email,
+                        subject,
+                        content,
+                        datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                        ))
+        conn.commit()
+        conn.close()
+        
+        return redirect("/contact.html?status=success")
+    
+    except Exception:
+        return redirect("/contact.html?status=error")
 
 
 @app.route("/admin/messages")

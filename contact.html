@@ -108,9 +108,10 @@
             </div>
 
             <p class="contact-intro">
-              现在先使用静态表单展示结构，后面你可以接入 Flask 来实现真正的提交功能。
+              你可以直接通过下方表单发送留言，提交后会进入网站后端数据库。
             </p>
 
+            <div id="form-message" class="form-message" style="display: none;"></div>
             <form class="contact-form" action="/api/message" method="post">
               <div class="form-row">
                 <label for="name">昵称 / 姓名</label>
@@ -131,10 +132,13 @@
                 <label for="content">留言内容</label>
                 <textarea id="content" name="content" rows="8" placeholder="请输入你想交流的内容" required></textarea>
               </div>
-
+              
               <div class="form-actions">
-                <button type="submit" class="btn btn-primary">发送留言</button>
-                <span>留言将提交到网站后端</span>
+                <button type="submit" class="btn btn-primary submit-btn" id="submitBtn">
+                  <span class="btn-text">发送留言</span>
+                  <span class="btn-loading" style="display: none;">提交中...</span>
+                </button>
+                <span>提交后会自动保存到留言数据库</span>
               </div>
             </form>
           </article>
@@ -236,14 +240,42 @@
   <button class="back-top" aria-label="返回顶部">↑</button>
   <script src="js/script.js"></script>
   <script>
+  const form = document.getElementById("contactForm");
+  const submitBtn = document.getElementById("submitBtn");
+  const btnText = submitBtn.querySelector(".btn-text");
+  const btnLoading = submitBtn.querySelector(".btn-loading");
+  const messageBox = document.getElementById("form-message");
+
+  function showMessage(type, text) {
+    messageBox.className = "form-message " + type;
+    messageBox.textContent = text;
+    messageBox.style.display = "block";
+    messageBox.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+
   const params = new URLSearchParams(window.location.search);
   const status = params.get("status");
-  
+
   if (status === "success") {
-    alert("留言提交成功！");
+    showMessage("success", "留言提交成功！感谢你的来访，我会尽快查看。");
+    if (form) form.reset();
+
+    const cleanUrl = window.location.pathname;
+    window.history.replaceState({}, document.title, cleanUrl);
   } else if (status === "empty") {
-    alert("请填写完整信息。");
-    }
+    showMessage("warning", "提交失败：请完整填写姓名、邮箱、主题和留言内容。");
+  } else if (status === "error") {
+    showMessage("error", "提交失败：服务器暂时无法处理请求，请稍后再试。");
+  }
+
+  if (form) {
+    form.addEventListener("submit", function () {
+      submitBtn.disabled = true;
+      submitBtn.classList.add("is-loading");
+      btnText.style.display = "none";
+      btnLoading.style.display = "inline";
+    });
+  }
   </script>
 </body>
 </html>

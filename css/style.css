@@ -1754,3 +1754,60 @@ img {
     grid-template-columns: 1fr;
   }
 }
+
+.form-message {
+  margin: 22px 0 18px;
+  padding: 14px 16px;
+  border: 1px solid;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.7;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+  animation: fadeSlideIn 0.35s ease;
+}
+
+.form-message.success {
+  color: #dfffc3;
+  background: rgba(130, 210, 38, 0.12);
+  border-color: rgba(199, 246, 63, 0.45);
+}
+
+.form-message.warning {
+  color: #fff1b8;
+  background: rgba(255, 217, 90, 0.10);
+  border-color: rgba(255, 217, 90, 0.42);
+}
+
+.form-message.error {
+  color: #ffd0d7;
+  background: rgba(255, 95, 122, 0.10);
+  border-color: rgba(255, 95, 122, 0.42);
+}
+
+.submit-btn[disabled] {
+  opacity: 0.72;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.submit-btn.is-loading {
+  pointer-events: none;
+}
+
+.form-row input:invalid:focus,
+.form-row textarea:invalid:focus {
+  border-color: rgba(255, 95, 122, 0.58);
+  box-shadow: 0 0 0 3px rgba(255, 95, 122, 0.10);
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
