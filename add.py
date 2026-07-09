@@ -1,59 +1,86 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
-import smtplib
-from email.mime.text import MIMEText
-from email.header import Header
+from flask import Flask, request, jsonify, render_template_string
+import sqlite3
+from pathlib import Path
+from datetime import datetime
 
 app = Flask(__name__)
-app.secret_key = "your-secret-key"
 
-@app.route("/")
-def index():
-    return render_template("index.html")
+DB_DIR = Path("instance")
+DB_DIR.mkdir(exist_ok=True)
+DB_PATH = DB_DIR / "messages.db"
 
-@app.route("/contact.html")
-def contact_page():
-    return render_template("contact.html")
+def init_db():
+    conn = sqlite3.connect(DB_PATH)
+    cur =conn.cursor()
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS messages (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL,
+            email TEXT NOT NULL,
+            subject TEXT NOT NULL,
+            content TEXT NOT NULL,
+            created_at TEXT NOT NULL
+        )
+    """)
+    conn.commit()
+    conn.close()
 
-@app.route("/contact", methods=["POST"])
-def contact_submit():
+
+@app.route("/api/message", methods=["POST"])
+def save_message():
     name = request.form.get("name", "").strip()
     email = request.form.get("email", "").strip()
-    topic = request.form.get("topic", "").strip()
-    message = request.form.get("message", "").strip()
+    subject = request.form.get("subject", "").strip()
+    content = request.form.get("content", "").strip()
 
-    if not name or not email or not topic or not message:
-        flash("请填写完整信息")
-        return redirect(url_for("contact_page"))
+    if not name or not email or not subject or not content:
+        return "请填写完整信息", 400
+    
+    conn = sqlite3.connect(DB_PATH)
+    cur =conn.cursor()
+    cur.execute("""
+        INSERT INTO messages (name, email, subject, content, created_at)
+        VALUES (?, ?, ?, ?, ?)
+    """, (name, email, subject, content, datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
+    conn.commit()
+    conn.close()
 
-    body = f"""
-昵称/姓名: {name}
-邮箱: {email}
-主题: {topic}
+    return "留言提交成功！"
 
-留言内容:
-{message}
-"""
+@app.route("/admin/messages")
+def list_messages():
+    conn =sqlite3.connect(DB_PATH)
+    cur = conn.cursor()
+    cur.execute("""
+        SELECT id, name, email, subject, content, created_at
+        FROM messages
+        ORDER BY id DESC
+    """)
+    rows = cur.fetchall()
+    conn.close()
 
-    sender_email = "你的邮箱@gmail.com"
-    sender_password = "你的应用专用密码"
-    receiver_email = "qwq861186@gmail.com"
+    html = """
+    <h1>留言列表</h1>
+    <table border="1" cellpadding="8" cellspacing="0">
+      <tr>
+        <th>ID</th><th>姓名</th><th>邮箱</th><th>主题</th><th>内容</th><th>时间</th>
+      </tr>
+      {% for row in rows %}
+      <tr>
+        <td>{{ row[0] }}</td>
+        <td>{{ row[1] }}</td>
+        <td>{{ row[2] }}</td>
+        <td>{{ row[3] }}</td>
+        <td>{{ row[4] }}</td>
+        <td>{{ row[5] }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    """
 
-    msg = MIMEText(body, "plain", "utf-8")
-    msg["From"] = Header(sender_email, "utf-8")
-    msg["To"] = Header(receiver_email, "utf-8")
-    msg["Subject"] = Header(f"网站留言：{topic}", "utf-8")
-
-    try:
-        smtp = smtplib.SMTP_SSL("smtp.gmail.com", 465)
-        smtp.login(sender_email, sender_password)
-        smtp.sendmail(sender_email, [receiver_email], msg.as_string())
-        smtp.quit()
-
-        flash("留言发送成功")
-    except Exception as e:
-        flash(f"留言发送失败：{e}")
-
-    return redirect(url_for("contact_page"))
+    from flask import render_template_string
+    return render_template_string(html, rows=rows)
 
 if __name__ == "__main__":
+    init_db()
     app.run(host="0.0.0.0", port=5000, debug=True)

@@ -111,25 +111,25 @@
               现在先使用静态表单展示结构，后面你可以接入 Flask 来实现真正的提交功能。
             </p>
 
-            <form class="contact-form">
+            <form class="contact-form" action="/api/message" method="post">
               <div class="form-row">
                 <label for="name">昵称 / 姓名</label>
-                <input type="text" id="name" name="name" placeholder="请输入你的名字" />
+                <input type="text" id="name" name="name" placeholder="请输入你的名字" required>
               </div>
 
               <div class="form-row">
                 <label for="email">邮箱</label>
-                <input type="email" id="email" name="email" placeholder="请输入你的邮箱" />
+                <input type="email" id="email" name="email" placeholder="请输入你的邮箱" required>
               </div>
 
               <div class="form-row">
                 <label for="topic">主题</label>
-                <input type="text" id="topic" name="topic" placeholder="例如：合作、交流、作品反馈" />
+                <input type="text" id="topic" name="topic" placeholder="例如：合作、交流、作品反馈" required>
               </div>
 
               <div class="form-row">
                 <label for="message">留言内容</label>
-                <textarea id="message" name="message" rows="6" placeholder="请输入你想交流的内容"></textarea>
+                <textarea id="message" name="message" rows="6" placeholder="请输入你想交流的内容" required></textarea>
               </div>
 
               <div class="form-actions">
