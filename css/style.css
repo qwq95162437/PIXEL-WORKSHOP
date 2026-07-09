@@ -1510,7 +1510,7 @@ img {
 .form-row textarea {
   width: 100%;
   padding: 14px 16px;
-  color: var(--text);
+  color: #d8dde1;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.12);
   outline: none;
@@ -1526,7 +1526,8 @@ img {
 
 .form-row input::placeholder,
 .form-row textarea::placeholder {
-  color: #7f8a91;
+  color: #d8dde1;
+  opacity: 0.75;
 }
 
 .form-actions {
