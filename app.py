@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template_string
+from flask import Flask, request, render_template_string, redirect, url_for
 import sqlite3
 from pathlib import Path
 from datetime import datetime
@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 DB_DIR = Path("instance")
 DB_DIR.mkdir(exist_ok=True)
-DB_PATH = DB_DIR / "messages.db"
+DB_PATH = str(DB_DIR / "messages.db")
 
 def init_db():
     conn = sqlite3.connect(DB_PATH)
@@ -34,7 +34,7 @@ def save_message():
     content = request.form.get("content", "").strip()
 
     if not name or not email or not subject or not content:
-        return "请填写完整信息", 400
+        return redirect("/contact.html?status=empty")
     
     conn = sqlite3.connect(DB_PATH)
     cur =conn.cursor()
@@ -45,7 +45,7 @@ def save_message():
     conn.commit()
     conn.close()
 
-    return "留言提交成功！"
+    return redirect("/contact.html?status=success")
 
 @app.route("/admin/messages")
 def list_messages():
@@ -77,8 +77,7 @@ def list_messages():
       {% endfor %}
     </table>
     """
-
-    from flask import render_template_string
+    
     return render_template_string(html, rows=rows)
 
 if __name__ == "__main__":
