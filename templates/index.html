@@ -6,14 +6,14 @@
   <meta name="description" content="像素造物所——展示软件学习、游戏作品与开发日志的个人作品网站。" />
   <title>像素造物所</title>
   <link rel="preload" as="image" href="images/hero/hero-workstation.webp" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
   <div class="pixel-noise" aria-hidden="true"></div>
 
   <header class="site-header">
     <div class="container nav-wrap">
-      <a class="brand" href="index.html" aria-label="像素造物所首页">
+      <a class="brand" href="{{ url_for('home') }}" aria-label="像素造物所首页">
         <span class="brand-icon" aria-hidden="true">
           <i></i><i></i><i></i><i></i><i></i>
         </span>
@@ -25,15 +25,15 @@
       </button>
 
       <nav class="main-nav" aria-label="主导航">
-        <a class="active" href="index.html">首页</a>
-        <a href="software.html">软件学习</a>
-        <a href="games.html">游戏作品</a>
-        <a href="log.html">开发日志</a>
-        <a href="about.html">关于我</a>
-        <a href="contact.html">联系</a>
+        <a class="active" href="{{ url_for('home') }}">首页</a>
+        <a href="{{ url_for('software') }}">软件学习</a>
+        <a href="{{ url_for('games') }}">游戏作品</a>
+        <a href="{{ url_for('log') }}">开发日志</a>
+        <a href="{{ url_for('about') }}">关于我</a>
+        <a href="{{ url_for('contact') }}">联系</a>
       </nav>
 
-      <a class="btn btn-primary nav-cta" href="games.html">查看作品 <span>›</span></a>
+      <a class="btn btn-primary nav-cta" href="{{ url_for('games') }}">查看作品 <span>›</span></a>
     </div>
   </header>
 
@@ -57,14 +57,14 @@
             以及持续更新的项目成果。
           </p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="software.html">浏览软件栈 <span>›</span></a>
-            <a class="btn btn-ghost" href="games.html">进入游戏展区 <span>›</span></a>
+            <a class="btn btn-primary" href="{{ url_for('software') }}">浏览软件栈 <span>›</span></a>
+            <a class="btn btn-ghost" href="{{ url_for('games') }}">进入游戏展区 <span>›</span></a>
           </div>
         </div>
 
         <div class="hero-art reveal">
           <img 
-          src="images/hero/hero-workstation.webp" 
+          src="{{ url_for('static', filename='images/hero/hero-workstation.webp') }}" 
           alt="像素风开发工作台"
           fetchpriority="high"
           decoding="async"
@@ -81,7 +81,7 @@
           <article class="featured-card reveal">
             <div class="thumb">
               <img 
-              src="images/projects/pixel-adventure.webp" 
+              src="{{ url_for('static', filename='images/projects/pixel-adventure.webp') }}" 
               alt="像素冒险 Demo"
               fetchpriority="high"
               decoding="async"
@@ -101,7 +101,7 @@
           <article class="featured-card reveal">
             <div class="thumb">
               <img 
-              src="images/projects/puzzle-temple.webp" 
+              src="{{ url_for('static', filename='images/projects/puzzle-temple.webp') }}" 
               alt="3D 解谜原型"
               fetchpriority="high"
               decoding="async"
@@ -121,7 +121,7 @@
           <article class="featured-card reveal">
             <div class="thumb">
               <img 
-              src="images/projects/indie-lab.webp" 
+              src="{{ url_for('static', filename='images/projects/indie-lab.webp') }}" 
               alt="独立游戏实验室"
               fetchpriority="high"
               decoding="async"
@@ -153,7 +153,7 @@
           <article class="software-card reveal">
             <div class="soft-icon unity-icon">
               <img 
-              src="images/software/unity-icon.png" 
+              src="{{ url_for('static', filename='images/software/unity-icon.png') }}" 
               alt="Unity 图标"
               loading="lazy"
               decoding="async"
@@ -173,7 +173,7 @@
           <article class="software-card reveal">
             <div class="soft-icon unreal-icon">
               <img 
-              src="images/software/unreal-engine-icon.png" 
+              src="{{ url_for('static', filename='images/software/unreal-engine-icon.png') }}" 
               alt="Unreal Engine 图标"
               loading="lazy"
               decoding="async"
@@ -193,7 +193,7 @@
           <article class="software-card reveal">
             <div class="soft-icon blender-icon">
               <img 
-              src="images/software/blender-icon.png" 
+              src="{{ url_for('static', filename='images/software/blender-icon.png') }}" 
               alt="Blender 图标"
               loading="lazy"
               decoding="async"
@@ -213,7 +213,7 @@
           <article class="software-card reveal">
             <div class="soft-icon ps-icon">
               <img 
-              src="images/software/photoshop-icon.png" 
+              src="{{ url_for('static', filename='images/software/photoshop-icon.png') }}" 
               alt="Photoshop 图标"
               loading="lazy"
               decoding="async"
@@ -245,7 +245,7 @@
           <article class="game-card reveal">
             <div class="game-cover">
               <img 
-              src="images/projects/pixel-adventure.webp" 
+              src="{{ url_for('static', filename='images/projects/pixel-adventure.webp') }}" 
               alt="像素冒险 Demo"
               loading="lazy"
               decoding="async"
@@ -261,14 +261,14 @@
                 <span class="tag gray">关卡探索</span>
               </div>
               <p>一款复古像素风格的平台跳跃游戏，包含多个关卡、敌人 AI 与收集系统。</p>
-              <a href="pixel-adventure.html" class="btn btn-small">查看详情 <span>›</span></a>
+              <a href="{{ url_for('pixel_adventure') }}" class="btn btn-small">查看详情 <span>›</span></a>
             </div>
           </article>
 
           <article class="game-card reveal">
             <div class="game-cover">
               <img 
-              src="images/projects/puzzle-temple.webp" 
+              src="{{ url_for('static', filename='images/projects/puzzle-temple.webp') }}" 
               alt="3D 解谜原型"
               loading="lazy"
               decoding="async"
@@ -285,14 +285,14 @@
                 <span class="tag cyan">环境探索</span>
               </div>
               <p>3D 视角解谜原型，利用机关与光影解开谜题，专注关卡设计与互动体验。</p>
-              <a href="puzzle-temple.html" class="btn btn-small">查看详情 <span>›</span></a>
+              <a href="{{ url_for('puzzle_temple') }}" class="btn btn-small">查看详情 <span>›</span></a>
             </div>
           </article>
 
           <article class="game-card reveal">
             <div class="game-cover">
               <img 
-              src="images/projects/indie-lab.webp" 
+              src="{{ url_for('static', filename='images/projects/indie-lab.webp') }}" 
               alt="独立游戏实验室"
               loading="lazy"
               decoding="async"
@@ -308,7 +308,7 @@
                 <span class="tag violet">玩法迭代</span>
               </div>
               <p>各种玩法与系统的实验场，记录想法、验证机制，寻找有趣的游戏可能性。</p>
-              <a href="indie-lab.html" class="btn btn-small">查看详情 <span>›</span></a>
+              <a href="{{ url_for('indie_lab') }}" class="btn btn-small">查看详情 <span>›</span></a>
             </div>
           </article>
         </div>
@@ -356,7 +356,7 @@
               <div class="timeline-item">
                 <span class="time-icon">
                   <img 
-                  src="images/icons/grass-block.png" 
+                  src="{{ url_for('static', filename='images/icons/grass-block.png') }}" 
                   alt="草地方块"
                   loading="lazy"
                   decoding="async"
@@ -373,7 +373,7 @@
               <div class="timeline-item">
                 <span class="time-icon">
                   <img 
-                  src="images/icons/blue-cube.png" 
+                  src="{{ url_for('static', filename='images/icons/blue-cube.png') }}" 
                   alt="发光蓝色方块"
                   loading="lazy"
                   decoding="async"
@@ -390,7 +390,7 @@
               <div class="timeline-item">
                 <span class="time-icon">
                   <img 
-                  src="images/icons/pickaxe.png" 
+                  src="{{ url_for('static', filename='images/icons/pickaxe.png') }}" 
                   alt="镐子"
                   loading="lazy"
                   decoding="async"
@@ -415,7 +415,7 @@
             <label><input type="checkbox"> 更新开发日志</label>
             <div class="campfire">
               <img 
-              src="images/icons/campfire.png" 
+              src="{{ url_for('static', filename='images/icons/campfire.png') }}" 
               alt="像素篝火"
               loading="lazy"
               decoding="async"
@@ -433,7 +433,7 @@
         <div class="about-box reveal">
           <div class="pixel-avatar">
             <img 
-            src="images/icons/avatar.png" 
+            src="{{ url_for('static', filename='images/icons/avatar.png') }}" 
             alt="开发者像素形象"
             loading="lazy"
             decoding="async"
@@ -447,7 +447,7 @@
             <p>记录学习过程，分享开发成果，不断挑战自己，做出更有趣的作品。</p>
           </div>
           <div class="about-action" id="contact">
-            <a class="btn btn-primary large" href="contact.html">联系我</a>
+            <a class="btn btn-primary large" href="{{ url_for('contact') }}">联系我</a>
             <span>期待与你交流想法与合作！</span>
           </div>
         </div>
@@ -458,7 +458,7 @@
   <footer class="site-footer">
     <div class="container footer-grid">
       <div>
-        <a class="brand footer-brand" href="index.html">
+        <a class="brand footer-brand" href="{{ url_for('home') }}">
           <span class="brand-icon small" aria-hidden="true">
             <i></i><i></i><i></i><i></i><i></i>
           </span>
@@ -468,31 +468,31 @@
       </div>
 
       <nav class="footer-nav">
-        <a href="index.html">首页</a>
-        <a href="software.html">软件学习</a>
-        <a href="games.html">游戏作品</a>
-        <a href="log.html">开发日志</a>
-        <a href="about.html">关于我</a>
-        <a href="contact.html">联系</a>
+        <a href="{{ url_for('home') }}">首页</a>
+        <a href="{{ url_for('software') }}">软件学习</a>
+        <a href="{{ url_for('games') }}">游戏作品</a>
+        <a href="{{ url_for('log') }}">开发日志</a>
+        <a href="{{ url_for('about') }}">关于我</a>
+        <a href="{{ url_for('contact') }}">联系</a>
       </nav>
 
       <div class="socials">
         <a href="https://github.com/qwq95162437" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
-          <img src="images/icons/github.png" alt="GitHub">
+          <img src="{{ url_for('static', filename='images/icons/github.png') }}" alt="GitHub">
         </a>
         <a href="https://space.bilibili.com/1648424499" aria-label="哔哩哔哩" target="_blank" rel="noopener noreferrer">
-          <img src="images/icons/bilibili.png" alt="哔哩哔哩">
+          <img src="{{ url_for('static', filename='images/icons/bilibili.png') }}" alt="哔哩哔哩">
         <a href="https://mail.google.com/mail/?view=cm&fs=1&to=qwq861186@gmail.com"
            aria-label="Gmail"
            target="_blank"
            rel="noopener noreferrer">
-          <img src="images/icons/gmail.png" alt="Gmail">
+          <img src="{{ url_for('static', filename='images/icons/gmail.png') }}" alt="Gmail">
         </a>
       </div>
     </div>
   </footer>
 
   <button class="back-top" aria-label="返回顶部">↑</button>
-  <script src="js/script.js"></script>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>

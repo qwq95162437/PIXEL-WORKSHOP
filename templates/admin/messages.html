@@ -1,0 +1,86 @@
+{% extends "admin/base.html" %}
+
+{% block title %}留言列表{% endblock %}
+
+{% block content %}
+<div class="stats">
+  <div class="stat-card">
+    <h3>总留言数</h3>
+    <strong>{{ total }}</strong>
+  </div>
+  <div class="stat-card">
+    <h3>未读留言</h3>
+    <strong>{{ unread_count }}</strong>
+  </div>
+  <div class="stat-card">
+    <h3>已读留言</h3>
+    <strong>{{ read_count }}</strong>
+  </div>
+</div>
+
+<div class="toolbar">
+  <form method="get" action="{{ url_for('list_messages') }}">
+    <input
+      type="text"
+      name="keyword"
+      placeholder="搜索姓名 / 邮箱 / 主题 / 内容"
+      value="{{ keyword }}"
+    >
+    
+    <select name="status">
+      <option value="all" {% if status == "all" %}selected{% endif %}>全部状态</option>
+      <option value="unread" {% if status == "unread" %}selected{% endif %}>未读</option>
+      <option value="read" {% if status == "read" %}selected{% endif %}>已读</option>
+    </select>
+
+    <button type="submit" class="btn btn-primary">搜索</button>
+    <a href="{{ url_for('list_messages') }}" class="btn btn-secondary" style="display:inline-flex;align-items:center;">重置</a>
+  </form>
+</div>
+
+{% if rows %}
+<div class="table-card">
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>状态</th>
+        <th>姓名</th>
+        <th>邮箱</th>
+        <th>主题</th>
+        <th>内容</th>
+        <th>时间</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in rows %}
+        {% include "admin/message_row.html" %}
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="pagination">
+  {% if page > 1 %}
+    <a href="{{ url_for('list_messages', keyword=keyword, status=status, page=page-1) }}">上一页</a>
+  {% endif %}
+
+  {% for p in range(1, total_pages + 1) %}
+    {% if p == page %}
+      <span class="current">{{ p }}</span>
+    {% else %}
+      <a href="{{ url_for('list_messages', keyword=keyword, status=status, page=p) }}">{{ p }}</a>
+    {% endif %}
+  {% endfor %}
+
+  {% if page < total_pages %}
+    <a href="{{ url_for('list_messages', keyword=keyword, status=status, page=page+1) }}">下一页</a>
+  {% endif %}
+</div>
+{% else %}
+<div class="empty-box">
+  暂无符合条件的留言。
+</div>
+{% endif %}
+{% endblock %}

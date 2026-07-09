@@ -1,0 +1,33 @@
+<tr>
+  <td>{{ row["id"] }}</td>
+  <td>
+    {% if row["is_read"] == 1 %}
+      <span class="status-badge status-read">已读</span>
+    {% else %}
+      <span class="status-badge status-unread">未读</span>
+    {% endif %}
+  </td>
+  <td>{{ row["name"] }}</td>
+  <td>{{ row["email"] }}</td>
+  <td>{{ row["subject"] }}</td>
+  <td class="content-preview">{{ row["content"] }}</td>
+  <td>{{ row["created_at"] }}</td>
+  <td>
+    <div class="actions">
+      {% if row["is_read"] == 0 %}
+      <form method="post" action="{{ url_for('mark_message_read', message_id=row['id']) }}">
+        <button type="submit" class="btn btn-success">标记已读</button>
+      </form>
+      {% else %}
+      <form method="post" action="{{ url_for('mark_message_unread', message_id=row['id']) }}">
+        <button type="submit" class="btn btn-warning">标记未读</button>
+      </form>
+      {% endif %}
+
+      <form method="post" action="{{ url_for('delete_message', message_id=row['id']) }}"
+            onsubmit="return confirm('确定要删除这条留言吗？');">
+        <button type="submit" class="btn btn-danger">删除</button>
+      </form>
+    </div>
+  </td>
+</tr>
